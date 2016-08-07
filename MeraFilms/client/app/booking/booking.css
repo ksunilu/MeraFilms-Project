@@ -1,0 +1,21 @@
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+
+
+/*.badge-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.badge-warning {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}*/

@@ -1,0 +1,76 @@
+<div class="container">
+      <div class="row">
+          <div class="centre-block">
+            <form>
+              <table class="table">
+                  <caption>
+                    <h3>
+                      Make Payment
+                    </h3>
+                  </caption>
+                  <tr>
+                      <td>
+                          <strong>Name on Card : </strong>
+                      </td>
+                      <td>
+                          <input class="form-control text-uppercase"
+                           style="text-transform: uppercase;"
+                           type="text"  ng-model="$ctrl.showData.name" />
+                      </td>
+                  </tr>
+                  <tr>
+                      <td> <strong>Debit/Credit Card Type :</strong>
+                      </td>
+                      <td>
+                        <select  class="form-control"  ng-model="$ctrl.showData.type"
+                            ng-options = " m as m for m in $ctrl.backData.cardTypes">
+                        </select>
+
+                      </td>
+                  </tr>
+                  <tr>
+                      <td> <strong>Debit/Credit Card Number :</strong>
+                      </td>
+                      <td>
+                        <input class="form-control" ui-mask="'9999-9999-9999-9999'" type="text"
+                        ng-model="$ctrl.showData.number" />
+                      </td>
+                  </tr>
+                  <tr>
+                      <td> <strong>CVV Number :</strong>
+                      </td>
+                      <td>
+                        <input class="form-control"  type="text"  ng-model="$ctrl.showData.cvv" />
+                      </td>
+                  </tr>
+                  <tr>
+                      <td> <strong>Card Expiry Date	:</strong>
+                      </td>
+                      <td>
+                        <input class="form-control"  type="month"
+                        ng-model="$ctrl.showData.expiry" >
+                      </td>
+                  </tr>
+                  <tr>
+                    <tr>
+                      <th>Total:  </th>
+                      <td> &#x20B9; {{$ctrl.bookingShowData.selectTotal}} </td>
+                    </tr>
+                  </tr>
+                  <tr>
+                    <td></td><td></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                    <!-- <a style="text-decoration: none;" href="/print" > -->
+                      <button  ng-click ="$ctrl.addPayment()"  class="center-block btn btn-success" style="text-align: center; width: 100%; ">
+                        MAKE PAYMENT
+                      </button>
+                    <!-- </a> -->
+                    </td>
+                  </tr>
+              </table>
+            </form>
+          </div>
+      </div>
+</div>

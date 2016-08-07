@@ -1,0 +1,65 @@
+<div class="container">
+
+  <div class="center-block row col-sm-12" >
+
+    <a ng-show ="$ctrl.SeatsTaken" style="text-decoration: none;" href="#">
+      <span  class="center-block btn btn-danger btn-lg" style="text-align: center; width: 100%; ">
+        SEATS TAKEN AWAY BY OTHER CUSTOMER. CONTACT OFFICE FOR REFUND.
+      </span>
+    </a>
+
+    <table ng-hide ="$ctrl.SeatsTaken" class = "table">
+      <caption><h3>Booking Summary</h3></caption>
+      <tr>
+        <th>Movie : </th>
+        <td>   {{$ctrl.dirtyBooking.movie}} </td>
+      </tr>
+      <tr>
+        <th>Theater : </th>
+        <td>  {{$ctrl.dirtyBooking.name}} </td>
+      </tr>
+      <tr>
+        <th>Date : </th>
+        <td>  {{ $ctrl.dirtyBooking.bdate.substr(0,10)}}</td>
+      </tr>
+      <tr>
+        <th>Time:  </th>
+        <td>  {{$ctrl.dirtyBooking.slot}} </td>
+      </tr>
+      <tr>
+        <th>Price : </th>
+        <td> &#x20B9; {{$ctrl.dirtyBooking.seatPlan.price}} X {{$ctrl.showData.selectedCount}}</td>
+      </tr>
+
+      <tr>
+        <th> {{$ctrl.dirtyBooking.seatPlan.name.toUpperCase()}} Seats:  </th>
+        <td> {{$ctrl.showData.selected}} </td>
+      </tr>
+      <tr>
+        <th>Tax & Other Charges: </th>
+        <td> &#x20B9; {{$ctrl.showData.otherCharges}}  </td>
+      </tr>
+
+      <tr>
+        <th>Total:  </th>
+        <td> &#x20B9; {{$ctrl.showData.selectTotal}} </td>
+      </tr>
+      <tr>
+        <td>
+          <a style="text-decoration: none;" href="#">
+            <span  class="center-block btn btn-success" style="text-align: center; width: 100%; ">
+              PRINT
+            </span>
+          </a>
+        </td>
+        <!-- finalizeBooking -->
+        <td>
+            <button ng-click ="$ctrl.finalizeBooking()" class="center-block btn btn-success" style="text-align: center; width: 100%; ">
+              Finalize Booking
+            </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>

@@ -1,0 +1,147 @@
+<div class="container well">
+  <h1 class="page-header">Cinemas and Cineplex </h1>
+  <div class="row" >
+    <div class="col-md-4">
+      <form>
+        <table class="table">
+            <tr>
+                <td>
+                    <strong>Cinema Name : </strong>
+                </td>
+                <td>
+                    <input class="form-control text-uppercase" type="text" placeholder="Cinema Name .." ng-model="$ctrl.name" />
+                </td>
+            </tr>
+            <tr>
+                <td> <strong>Location :</strong>
+                </td>
+                <td>
+                    <input  class="form-control text-uppercase" type="text" placeholder="Location ....." ng-model="$ctrl.location" />
+                </td>
+            </tr>
+            <tr>
+                <td> <strong>Address	:</strong>
+                </td>
+                <td>
+                    <input  class="form-control text-uppercase" type="text" placeholder="Address ......" ng-model="$ctrl.address" />
+                </td>
+            </tr>
+            <tr>
+                <td> <strong>Screen	:	</strong>
+                </td>
+                <td>
+                    <input  class="form-control text-uppercase" type="text" placeholder="Screen" ng-model="$ctrl.screen" />
+                </td>
+            </tr>
+            <tr>
+                <td> <strong>Time Slot 	:	</strong>
+                </td>
+                <td>
+                    <input  class="form-control text-uppercase" type="text" placeholder="Time Slot" ng-model="$ctrl.slot" />
+                </td>
+            </tr>
+            <tr>
+                <td> <strong>Seats	:	</strong>
+                </td>
+                <td>
+                  <select ng-model="$ctrl.seats"  ng-change="$ctrl.ShowSeats()">
+                    <option value={{seat.count}}   ng-repeat="seat in $ctrl.allSeats" > {{seat.count}} </option>
+                  </select>
+                </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <button type="button" class="btn btn-info btn-sm" ng-click="$ctrl.addCinemas()">
+                  <span class="glyphicon glyphicon-plus"></span> Add </button>
+                <button type="button" class="btn btn-info btn-sm" ng-click="$ctrl.deleteThing()">
+                  <span class="glyphicon glyphicon-remove"></span> Delete </button>
+                <button type="button" class="btn btn-info btn-sm" ng-click="$ctrl.updateThing()">
+                  <span class="glyphicon glyphicon-ok"></span> Update </button>
+              </td>
+            </tr>
+        </table>
+      </form>
+    </div>
+    		<div class="col-md-8" >
+          <!-- Show Seat Plan Starts -->
+          <div class="container-fluid">
+                <div class="row">
+                  <p>Seats View</p>
+                </div>
+                <div  clas = "row" ng-repeat="seat in $ctrl.allSeats | filter : {'count': $ctrl.seats}" >
+                      <div class ="row" >
+                             {{seat.name}} - Rs.{{seat.price}}
+                      </div>
+                      <div class ="row" >
+                        <table ng-show="$ctrl.seats">
+                          <tr ng-repeat="row in seat.rows">
+                            <td style="display:inline-block; width:25px" >
+                              <b> {{row.rn}} </b>
+                             </td>
+                            <td style="display:inline-block; width:28px" ng-repeat="v in row.s  track by $index">
+                               <span ng-show="v" style="display:inline-block; width:28px" class="badge"> {{v}} </span>
+                             </td>
+                          </tr>
+                      </table>
+                      </div>
+                </div>
+          </div>
+          <!-- Show Seat Plan Ends -->
+    		</div>
+	</div>
+  <br />
+  <!-- list of cinema halls in DB -->
+    <div class="row">
+        <fieldset>
+              <legend>
+                Cinema Hall's and Theaters
+              </legend>
+          <div class="row" >
+              <strong>
+                  <div class="col-md-3 col-sm-3 col-xs-5">
+                      <p> Cinema Name </p>
+                  </div>
+                  <div class="col-md-1 col-sm-2 col-xs-3">
+                      <p> Location </p>
+                  </div>
+                  <div class="col-md-3 col-sm-7 col-xs-7">
+                      <p> Address </p>
+                  </div>
+                  <div class="col-md-2 col-sm-3 col-xs-5">
+                      <p>Screen </p>
+                  </div>
+                  <div class="col-md-1 col-sm-3 col-xs-5">
+                      <p> Time Slot</p>
+                  </div>
+                  <div class="col-md-1 col-sm-1 col-xs-3">
+                      <p> Seats </p>
+                  </div>
+              </strong>
+          </div>
+
+          <div class="row" ng-repeat="thing in $ctrl.awesomeCinema" id={{thing._id}} >
+            <div class="col-md-3 col-sm-3 col-xs-5">
+                <a href="#" ng-click="$ctrl.showCinema($index)"> {{thing.name}} </a>
+            </div>
+            <div class="col-md-1 col-sm-2 col-xs-3">
+                <p> {{thing.location}} </p>
+            </div>
+            <div class="col-md-3 col-sm-7 col-xs-7">
+                <p> {{thing.address}} </p>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-5">
+                <p> {{thing.screen}} </p>
+            </div>
+            <div class="col-md-1 col-sm-3 col-xs-5">
+                <p> {{thing.slot}} </p>
+            </div>
+              <div class="col-md-1 col-sm-1 col-xs-3">
+                <p> {{thing.seats}} </p>
+            </div>
+            <!-- <div class="col-md-12 col-sm-12 col-xs-12">
+              <p> {{JSON.stringify( thing.seatPlan)}} </p>
+          </div> -->
+          </div>
+        </fieldset>
+  </div>
+</div>

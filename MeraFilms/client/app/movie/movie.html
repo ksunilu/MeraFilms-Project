@@ -1,0 +1,103 @@
+<div class="container well">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="bs-component">
+                <form class=" form-search" id="search-by-title-form">
+                    <fieldset>
+                        <legend>Search Movie</legend>
+                    </fieldset>
+                    <div>
+                      <table>
+                        <tr>
+                        <td>
+                        <label class="control-label" for="t">Title:</label>
+                        </td><td>
+                        <input type="text" id="t" name="t" ng-model="$ctrl.t"  class="form-control text-uppercase" style="width: 300px;">
+                        </td><td>
+                        <label class="control-label" for="y">Year:</label>
+                        </td><td>
+                        <input type="text" id="y" name="y" ng-model="$ctrl.y"  class="form-control text-uppercase"  style="width: 100px;">
+                        </td><td>
+                        <button id="search-by-title-button" type="button" ng-click="$ctrl.getOmdbMovie()" class="btn-sm btn-primary">Search</button>
+                        </td><td>
+                        <button id="search-by-title-reset"  type="button" class="btn-sm" ng-click="$ctrl.clearMovie()">Reset</button>
+                        </td><td>
+                        <button id="search-by-title-button" ng-show="$ctrl.movieData.Title" type="button" ng-click="$ctrl.addMovie()" class="btn-sm btn-primary ng-hide">Add Movie</button>
+                        </td><td>
+                        <button id="search-by-title-button" ng-show="$ctrl.movieData.Title" type="button" ng-click="$ctrl.deleteMovie()" class="btn-sm btn-primary ng-hide">Delete Movie</button>
+                        </td>
+                      </tr>
+                      </table>
+                    </div>
+                    </div>
+                </form>
+            </div>
+          </div>
+
+            <div class="row" >
+              		<div class="col-md-4">
+              			<img src={{$ctrl.movieData.Poster}}>
+              		</div>
+              		<div class="col-md-8">
+                      <h1 class="list-group-item"><strong>Title : </strong>{{$ctrl.movieData.Title}}</h1>
+                      <p class="list-group-item"><strong>Director :</strong> {{$ctrl.movieData.Director}}</p>
+                      <p class="list-group-item"><strong>Star Cast	:</strong>	{{$ctrl.movieData.Actors}}</p>
+                      <p class="list-group-item"><strong>Year	:	</strong>{{$ctrl.movieData.Year}}</p>
+                      <p class="list-group-item"><strong>Language	:	</strong>{{$ctrl.movieData.Language}}</p>
+                      <p class="list-group-item"><strong>Duration	:	</strong>{{$ctrl.movieData.Runtime}}</p>
+              		</div>
+          	</div>
+            <!-- <div class="row" >
+              <div class="col-md-2 col-xs-4 ">
+                  <p> <strong>JSON Details:</strong> </p>
+              </div>
+              <div class="col-md-10 col-xs-8" >
+                  <pre class="alert alert-success" > {{$ctrl.movieData}}</pre>
+              </div>
+            </div> -->
+
+      <div class="row">
+          <fieldset>
+                <legend>
+                  Movies in Data Base
+                </legend>
+            <div class="row" >
+                <strong>
+                    <div class="col-md-3 col-sm-3 col-xs-5">
+                        <p> Title </p>
+                    </div>
+                    <div class="col-md-1 col-sm-2 col-xs-3">
+                        <p> IMDB ID </p>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-3">
+                        <p> Year </p>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-5">
+                        <p> Director </p>
+                    </div>
+                    <div class="col-md-4 col-sm-7 col-xs-7">
+                        <p> Star Cast </p>
+                    </div>
+                </strong>
+            </div>
+            <div class="row" ng-repeat="movie in $ctrl.movieOldData" >
+              <div class="col-md-3 col-sm-3 col-xs-5">
+                  <a href="#" ng-click="$ctrl.showMovie($index)"> {{movie.Title}} </a>
+              </div>
+              <div class="col-md-1 col-sm-2 col-xs-3">
+                  <p> {{movie.imdbID}} </p>
+                  <!-- <p> {{$index}} </p> -->
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-3">
+                  <p> {{movie.Year}} </p>
+              </div>
+              <div class="col-md-2 col-sm-3 col-xs-5">
+                  <p> {{movie.Director}} </p>
+              </div>
+              <div class="col-md-4 col-sm-7 col-xs-7">
+                  <p> {{movie.Actors}} </p>
+              </div>
+            </div>
+          </fieldset>
+    </div>
+</div>

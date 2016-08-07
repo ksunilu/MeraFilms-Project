@@ -1,0 +1,124 @@
+<div class="container well">
+  <h2 class="page-header">Schedule Movie Show for Theaters & Cinema </h1>
+  <div class="row" >
+    <div class="col-md-6">
+      <form>
+        <table class="table">
+            <tr>
+                <td>
+                    <strong>Schedule Date : </strong>
+                </td>
+                <td>
+                    <input  class="form-control text-uppercase"  type="date"  ng-model="$ctrl.showData.bdate" />
+                </td>
+            </tr>
+            <tr>
+                <td> <strong>Movie	:	</strong>
+                </td>
+                <td>
+                  <select  class="form-control text-uppercase" ng-model="$ctrl.showData.movie_i"  ng-change="$ctrl.selectMovie()">
+                      <option value={{$index}}   ng-repeat="m in $ctrl.allMovies" > {{m.Title}} </option>
+                  </select>
+                </td>
+            </tr>
+            <tr>
+                <td> <strong>Theater :</strong>
+                </td>
+                <td>
+                  <select  class="form-control text-uppercase" ng-model="$ctrl.showData.name" ng-change="$ctrl.selectShowTheater()"
+                  ng-options = "m.name as m.name for m in $ctrl.allCinemas" >
+                  </select>
+                </td>
+            </tr>
+            <tr>
+                <td> <strong>Time Slot	:</strong>
+                </td>
+                <td>
+                  <select  class="form-control text-uppercase" ng-model="$ctrl.showData.slot_id"  ng-change="$ctrl.selectSlot()">
+                      <option value={{m._id}}   ng-repeat="m in $ctrl.allCinemas | filter : {'name': $ctrl.showData.name}" >
+                         {{m.slot}}
+                      </option>
+                  </select>
+                </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <button type="button"  class="center-block btn btn-info btn-lg"
+                style="text-align: center; width: 100%; "
+                ng-click="$ctrl.addBooking()">
+                   ADD SCHEDULE </button>
+              </td>
+            </tr>
+        </table>
+      </form>
+    </div>
+    		<div class="col-md-6" >
+          <!-- Show Seat Plan Starts -->
+          <div class="container-fluid">
+                <img src={{$ctrl.showData.Poster}} />
+                <!-- {{$ctrl.booking}} -->
+    		  </div>
+	     </div>
+  <br />
+  <!-- list of cinema halls in DB -->
+    <div class="row col-md-12">
+        <fieldset>
+              <legend>
+                Movies scheduled in Cinema Hall's and Theaters
+              </legend>
+        </fieldset>
+          <table class="table" >
+            <thead>
+          <tr >
+                  <th>
+                       Date
+                  </th>
+                  <th>
+                       Time
+                  </th>
+                  <th>
+                       Movie
+                  </th>
+                  <th>
+                      Theater
+                  </th>
+                  <th>
+                       Location
+                  </th>
+                  <th>
+                       Screen
+                  </th>
+                  <th>
+                  </th>
+          </tr>
+          <thead>
+          <tbody>
+          <tr ng-repeat="king in $ctrl.allBookings" ng-click="$ctrl.showSelectedBookings($index)">
+                    <td>
+                          {{king.bdate.substr(0,10)}}
+                    </td>
+                    <td>
+                         {{king.slot}}
+                    </td>
+                    <td>
+                         {{king.movie}}
+                    </td>
+                    <td>
+                          {{king.name}}
+                    </td>
+                    <td>
+                         {{king.location}}
+                    </td>
+                    <td >
+                         {{king.screen}}
+                    </td>
+                    <td >
+                      <button type="button" class="btn btn-info btn-sm"
+                          ng-click="$ctrl.deleteBooking(king._id, $index)">
+                        <span class="glyphicon glyphicon-remove"></span> Delete </button>
+                    </td>
+          </tr>
+        </tbody>
+        </table>
+  </div>
+</div>

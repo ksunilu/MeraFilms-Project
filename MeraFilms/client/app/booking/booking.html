@@ -1,0 +1,93 @@
+<style>
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+</style>
+
+<div class="container well">
+      <div class="col-sm-8"
+      ng-style="{'background-image': 'url(' + $ctrl.selectedMovie.Poster + ')'}"
+          style="background-size : 90%; background-repeat: no-repeat">
+           <div >
+                <div  class = "center-block row"  >
+                    <table class ="center-block">
+
+                          <tr ng-repeat="row in $ctrl.selectedBooking.seatPlan.rows">
+                            <td style="display:inline-block; width:25px" >
+                                <b> {{row.rn}} </b>
+                            </td>
+                            <td style="display:inline-block; width:28px"
+                                ng-repeat="v in row.s  track by $index">
+                                <a ng-click="$ctrl.markSeat(row,$index)">
+                                  <button ng-show="$ctrl.seatVisible(row,$index)"
+                                        ng-disabled="$ctrl.seatVisibleBar(row,$index)"
+                                        style="display:inline-block; width:28px"
+                                        ng-class="$ctrl.getSeatClass(row,$index)">
+                                       {{v}}
+                                  </button>
+                                </a>
+                                  <!-- <button ng-show="$ctrl.seatVisibleBar(row,$index)"
+                                        style="display:inline-block; width:28px"
+                                        class="$ctrl.getSeatClass(row,$index)">
+                                  </button> -->
+                             </td>
+                          </tr>
+                    </table>
+                </div>
+           </div>
+      </div>
+        <div class="center-block row col-md-4 col-sm-12" >
+          <table class = "table">
+            <caption><h3>Booking Summary</h3></caption>
+            <tr>
+              <th>Movie : </th>
+              <td>   {{$ctrl.selectedBooking.movie}} </td>
+            </tr>
+            <tr>
+              <th>Theater : </th>
+              <td>  {{$ctrl.selectedBooking.name}} </td>
+            </tr>
+            <tr>
+              <th>Date : </th>
+              <td>  {{ $ctrl.selectedBooking.bdate.substr(0,10)}}</td>
+            </tr>
+            <tr>
+              <th>Time:  </th>
+              <td>  {{$ctrl.selectedBooking.slot}} </td>
+            </tr>
+            <tr>
+              <th>Price : </th>
+              <td> &#x20B9; {{$ctrl.selectedBooking.seatPlan.price}} X {{$ctrl.showData.selectedCount}}</td>
+            </tr>
+
+            <tr>
+              <th> {{$ctrl.selectedBooking.seatPlan.name.toUpperCase()}} Seats:  </th>
+              <td> {{$ctrl.showData.selected}} </td>
+            </tr>
+            <tr>
+              <th>Tax & Other Charges: </th>
+              <td> &#x20B9; {{$ctrl.showData.otherCharges}}  </td>
+            </tr>
+
+            <tr>
+              <th>Total:  </th>
+              <td> &#x20B9; {{$ctrl.showData.selectTotal}} </td>
+            </tr>
+            <tr>
+              <td colspan="2" >
+                <a style="text-decoration: none;" href="/payment">
+                  <span  class="center-block btn btn-success" style="text-align: center; width: 100%; ">
+                    PROCEED TO PAY
+                  </span>
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+</div>
