@@ -8,7 +8,7 @@ class PrintComponent {
     this.$rootScope = $rootScope;
     this.$http = $http;
     this.socket = socket;
-
+    //GET DATA FROM $rootScope
     this.dirtyBooking = $rootScope.dirtyBooking;
     this.showData = $rootScope.bookingShowData;
     this.selectedBooking = {};
@@ -23,18 +23,19 @@ class PrintComponent {
       .then(response => {
         this.selectedBooking = response.data;
         // this.socket.syncUpdates('booking', this.selectedBooking);
+        //CHECK IF SSEAT ALLREADY TAKEN BY OTHER USER
         this.seatsTaken = this.CheckSeatsTakenAway();
       });
   }// end $onInit
 
   finalizeBooking()
-  {
+  {//THIS RUNS WHEN SOMEONE CLICKS
     if( ! this.seatsTaken )
     {
           this.markSeatTakenAway();
           this.$http.put('/api/bookings/' + this.dirtyBooking._id,
-              //angular.toJson(this.dirtyBooking)
-              JSON.stringify(this.dirtyBooking)
+              angular.toJson(this.dirtyBooking)
+              // JSON.stringify(this.dirtyBooking)
           );
     }
     this.$location.path('/');

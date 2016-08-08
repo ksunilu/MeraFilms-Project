@@ -50,15 +50,17 @@
 
     addCinemas() {
       this.setSeatData();
-        this.$http.post('/api/cinemass', {
-          name: this.name,
-          location: this.location,
-          address: this.address,
-          screen: this.screen,
-          slot: this.slot,
-          seats: this.seats,
-          seatPlan: this.seatData
-        });
+      var myData = {
+        name: this.name,
+        location: this.location,
+        address: this.address,
+        screen: this.screen,
+        slot: this.slot,
+        seats: this.seats,
+        seatPlan: this.seatData
+      };
+
+        this.$http.post('/api/cinemass', angular.toJson(myData) );
         this.name='';
         this.location='';
         this.address='';
@@ -93,16 +95,17 @@
 
     updateThing() {
         this.setSeatData();
-          this.$http.put('/api/cinemass/' + this._id, {
-            name: this.name,
-            location: this.location,
-            address: this.address,
-            screen: this.screen,
-            slot: this.slot,
-            seats: this.seats,
-            seatPlan: this.seatData
-          }
-         );
+        var myData = {
+          name: this.name,
+          location: this.location,
+          address: this.address,
+          screen: this.screen,
+          slot: this.slot,
+          seats: this.seats,
+          seatPlan: this.seatData
+        };
+
+          this.$http.put('/api/cinemass/' + this._id, angular.toJson(myData) );
     }
 
   }//end class MainController

@@ -25,10 +25,11 @@ class PaymentComponent {
   addPayment() {
     this.showData.pdate = new Date().toJSON().slice(0,10);
     this.showData.total =this.bookingShowData.selectTotal;
-    
+
     if (this.showData.name) {
       this.$http.post('/api/payments',
-        JSON.stringify(this.showData)
+        // JSON.stringify(this.showData)
+        angular.toJson(this.showData)
       );
     }
     this.$location.path('/print');

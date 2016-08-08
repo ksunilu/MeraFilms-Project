@@ -24,6 +24,7 @@ class ScheduleBookingComponent {
   $onInit() {
     this.getMoviesTheaters();
     this.getAllBookings();
+
   }// end $onInit
 
     getAllBookings()
@@ -34,6 +35,7 @@ class ScheduleBookingComponent {
           this.socket.syncUpdates('schedule-booking', this.allBookings);
         });
     }
+
     getMoviesTheaters()
     {
           this.$http.get('/api/movies')
@@ -86,12 +88,12 @@ class ScheduleBookingComponent {
         // set movie and date in booking //
         this.booking.movie = this.allMovies[this.showData.movie_i].Title;
         this.booking.imdbID = this.allMovies[this.showData.movie_i].imdbID;
-        this.booking.bdate = this.showData.bdate.substr(0,10);
+        this.booking.bdate = this.showData.bdate.toJSON().substr(0,10);
     }
 
+    //the function call setting data for Add/POST
     selectSlot()
     {
-
       this.setBookingVar();
       this.socket.syncUpdates('schedule-booking', this.booking);
     }
@@ -112,10 +114,12 @@ class ScheduleBookingComponent {
       // code CRUD starts //
       addBooking() {
         // this.setBookingVar();
+        // alert('adding');
         var cp = JSON.parse( JSON.stringify( this.booking ));
         if (this.booking.bdate) {
               this.$http.post('/api/bookings',
-                  JSON.stringify(cp)
+                  // JSON.stringify(cp)
+                  angular.toJson(cp)
               );
               this.updateAllBookingNClear();
         }

@@ -36,7 +36,8 @@ class MovieComponent {
   addMovie() {
     if (this.movieData) {
       this.$http.post('/api/movies',
-        JSON.stringify(this.movieData)
+        // JSON.stringify(this.movieData)
+        angular.toJson(this.movieData)
       );
       this.$onInit();
     }

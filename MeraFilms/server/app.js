@@ -10,6 +10,9 @@ mongoose.Promise = require('bluebird');
 import config from './config/environment';
 import http from 'http';
 
+
+
+
 // Connect to MongoDB
 mongoose.connect(config.mongo.uri, config.mongo.options);
 mongoose.connection.on('error', function(err) {
@@ -34,7 +37,7 @@ require('./routes').default(app);
 // Start server
 function startServer() {
   //sunil's code
-  // require('events').EventEmitter.prototype._maxListeners = 0;
+  require('events').EventEmitter.prototype._maxListeners = 0;
   //sunil's code
   app.angularFullstack = server.listen(config.port, config.ip, function() {
     console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));

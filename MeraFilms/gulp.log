@@ -1,0 +1,89 @@
+[06:11:15] Requiring external module babel-register
+[06:11:23] Using gulpfile D:\Projects\MeraFilms\gulpfile.babel.js
+[06:11:24] Starting 'serve'...
+[06:11:24] Starting 'clean:tmp'...
+[06:11:24] Starting 'constant'...
+[06:11:24] Starting 'env:all'...
+[06:11:24] Finished 'env:all' after 15 ms
+[06:11:24] Finished 'constant' after 292 ms
+[06:11:24] Finished 'clean:tmp' after 462 ms
+[06:11:24] Starting 'lint:scripts'...
+[06:11:24] Starting 'lint:scripts:client'...
+[06:11:24] Starting 'lint:scripts:server'...
+[06:11:24] Starting 'inject'...
+[06:11:24] Starting 'inject:js'...
+[06:11:24] Starting 'inject:css'...
+[06:11:25] gulp-inject 11 files into index.html.
+[06:11:25] Finished 'inject:css' after 1.08 s
+
+client\app\booking\booking.controller.js
+  line 50  col 67  Identifier 'payment_id' is not in camel case.
+  line 60  col 40  Identifier 'payment_id' is not in camel case.
+  line 62  col 28  Identifier 'payment_id' is not in camel case.
+  line 76  col 24  Identifier 'payment_id' is not in camel case.
+  line 77  col 22  Identifier 'payment_id' is not in camel case.
+  line 78  col 29  Identifier 'payment_id' is not in camel case.
+  line 79  col 24  Identifier 'payment_id' is not in camel case.
+  line 89  col 23  Identifier 'payment_id' is not in camel case.
+  line 93  col 37  Identifier 'payment_id' is not in camel case.
+
+  ‼  9 warnings
+
+[06:11:26] gulp-inject 36 files into index.html.
+[06:11:26] Finished 'inject:js' after 1.93 s
+[06:11:26] Finished 'inject' after 1.93 s
+
+client\app\print\print.controller.js
+  line 53  col 40  Identifier 'payment_id' is not in camel case.
+  line 55  col 28  Identifier 'payment_id' is not in camel case.
+  line 55  col 63  Identifier 'payment_id' is not in camel case.
+  line 70  col 40  Identifier 'payment_id' is not in camel case.
+  line 72  col 28  Identifier 'payment_id' is not in camel case.
+  line 74  col 27  Identifier 'payment_id' is not in camel case.
+
+  ‼  6 warnings
+
+
+client\app\schedule-booking\schedule-booking.controller.js
+  line 54  col 68  Identifier 'movie_i' is not in camel case.
+  line 63  col 51  Identifier 'payment_id' is not in camel case.
+  line 66  col 53  Identifier 'payment_id' is not in camel case.
+  line 76  col 68  Identifier 'slot_id' is not in camel case.
+  line 87  col 66  Identifier 'movie_i' is not in camel case.
+  line 88  col 67  Identifier 'movie_i' is not in camel case.
+
+  ‼  6 warnings
+
+[06:11:28] Finished 'lint:scripts:client' after 3.46 s
+[06:11:28] Finished 'lint:scripts:server' after 3.92 s
+[06:11:28] Finished 'lint:scripts' after 3.99 s
+[06:11:28] Starting 'wiredep:client'...
+[06:11:28] Finished 'wiredep:client' after 129 ms
+[06:11:28] Starting 'transpile:client'...
+[06:11:28] Starting 'styles'...
+[06:11:33] Finished 'styles' after 4.82 s
+[06:11:34] Finished 'transpile:client' after 5.82 s
+[06:11:34] Starting 'start:server'...
+[06:11:34] Finished 'start:server' after 25 ms
+[06:11:34] Starting 'start:client'...
+[nodemon] 1.9.2
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching: D:\Projects\MeraFilms\server/**/*
+[nodemon] starting `node server`
+Express server listening on 9000, in development mode
+SocketIO / [127.0.0.1:57528] CONNECTED
+[0mGET /schedule-movies [32m200 [0m94.768 ms - -[0m
+SocketIO / [127.0.0.1:57528] DISCONNECTED
+[0mGET /api/users/me [36m304 [0m183.396 ms - -[0m
+SocketIO / [127.0.0.1:57544] CONNECTED
+[0mGET /api/movies [36m304 [0m149.853 ms - -[0m
+[0mGET /api/cinemass [36m304 [0m566.374 ms - -[0m
+[0mGET /api/bookings [36m304 [0m772.297 ms - -[0m
+[0mGET /schedule-movies [32m200 [0m12.473 ms - -[0m
+SocketIO / [127.0.0.1:57544] DISCONNECTED
+[0mGET /api/users/me [32m200 [0m42.484 ms - 119[0m
+SocketIO / [127.0.0.1:57584] CONNECTED
+[0mGET /api/movies [32m200 [0m58.481 ms - -[0m
+[0mGET /api/bookings [32m200 [0m407.909 ms - -[0m
+[0mGET /api/cinemass [32m200 [0m316.311 ms - -[0m
+Terminate batch job (Y/N)? 

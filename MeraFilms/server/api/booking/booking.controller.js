@@ -85,7 +85,7 @@ export function create(req, res) {
 // Updates an existing Booking in the DB
 export function update(req, res) {
   console.log('SUNIL! in update');
-  console.log(req.body);
+  console.log(req.body.seatPlan.rows);
 
   if (req.body._id) {
     delete req.body._id;
