@@ -17,8 +17,11 @@ var BookingSchema = new mongoose.Schema({
             "name" : String,
             "price" : String,
             "count" : String,
-            "rows" : [ {"rn" : String,"s" : [ String ], payment_id: [String]  } ]
+            "rows" : [ {"rn" : String,
+					"s" : [ String ],
+				 payment_id: [String]  } ]
         }
 });
+
 
 export default mongoose.model('Booking', BookingSchema);

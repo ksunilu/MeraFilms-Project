@@ -15,6 +15,8 @@ class PrintComponent {
     this.seatsTaken = false;
 
     $scope.$on('$destroy', function() {
+      this.dirtyBooking = {};
+      this.showData = {};      
       socket.unsyncUpdates('print');
     });
   }// end constructor
@@ -27,18 +29,19 @@ class PrintComponent {
         this.seatsTaken = this.CheckSeatsTakenAway();
       });
   }// end $onInit
-
+  goHome()
+  {
+      this.$location.path('/');
+  }
   finalizeBooking()
-  {//THIS RUNS WHEN SOMEONE CLICKS
+  {
     if( ! this.seatsTaken )
     {
           this.markSeatTakenAway();
-          this.$http.put('/api/bookings/' + this.dirtyBooking._id,
-              angular.toJson(this.dirtyBooking)
-              // JSON.stringify(this.dirtyBooking)
-          );
+          var cp = JSON.parse( JSON.stringify( this.dirtyBooking ));
+          this.$http.put('/api/bookings/' + this.dirtyBooking._id, angular.toJson(cp));
     }
-    this.$location.path('/');
+    this.goHome();
   }
 
   CheckSeatsTakenAway()

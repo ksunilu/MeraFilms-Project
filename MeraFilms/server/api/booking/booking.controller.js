@@ -1,10 +1,10 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /               ->  index
- * POST    /               ->  create
- * GET     / /:id          ->  show
- * PUT     / /:id          ->  update
- * DELETE  / /:id          ->  destroy
+ * GET     /api/bookings              ->  index
+ * POST    /api/bookings              ->  create
+ * GET     /api/bookings/:id          ->  show
+ * PUT     /api/bookings/:id          ->  update
+ * DELETE  /api/bookings/:id          ->  destroy
  */
 
 'use strict';
@@ -23,7 +23,10 @@ function respondWithResult(res, statusCode) {
 
 function saveUpdates(updates) {
   return function(entity) {
-    var updated = _.merge(entity, updates);
+    // var updated = _.merge(entity, updates);
+    //sunil's Code
+    var updated = _.extend(entity, updates);
+    // sunil's Code
     return updated.save()
       .then(updated => {
         return updated;
@@ -76,7 +79,6 @@ export function show(req, res) {
 
 // Creates a new Booking in the DB
 export function create(req, res) {
-  // console.log(req.body);
   return Booking.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
@@ -84,9 +86,6 @@ export function create(req, res) {
 
 // Updates an existing Booking in the DB
 export function update(req, res) {
-  console.log('SUNIL! in update');
-  console.log(req.body.seatPlan.rows);
-
   if (req.body._id) {
     delete req.body._id;
   }

@@ -7,12 +7,12 @@ var newBooking;
 
 describe('Booking API:', function() {
 
-  describe('GET / ', function() {
+  describe('GET /api/bookings', function() {
     var bookings;
 
     beforeEach(function(done) {
       request(app)
-        .get('/ ')
+        .get('/api/bookings')
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -30,10 +30,10 @@ describe('Booking API:', function() {
 
   });
 
-  describe('POST / ', function() {
+  describe('POST /api/bookings', function() {
     beforeEach(function(done) {
       request(app)
-        .post('/ ')
+        .post('/api/bookings')
         .send({
           name: 'New Booking',
           info: 'This is the brand new booking!!!'
@@ -56,12 +56,12 @@ describe('Booking API:', function() {
 
   });
 
-  describe('GET / /:id', function() {
+  describe('GET /api/bookings/:id', function() {
     var booking;
 
     beforeEach(function(done) {
       request(app)
-        .get('/ /' + newBooking._id)
+        .get('/api/bookings/' + newBooking._id)
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -84,12 +84,12 @@ describe('Booking API:', function() {
 
   });
 
-  describe('PUT / /:id', function() {
+  describe('PUT /api/bookings/:id', function() {
     var updatedBooking;
 
     beforeEach(function(done) {
       request(app)
-        .put('/ /' + newBooking._id)
+        .put('/api/bookings/' + newBooking._id)
         .send({
           name: 'Updated Booking',
           info: 'This is the updated booking!!!'
@@ -116,11 +116,11 @@ describe('Booking API:', function() {
 
   });
 
-  describe('DELETE / /:id', function() {
+  describe('DELETE /api/bookings/:id', function() {
 
     it('should respond with 204 on successful removal', function(done) {
       request(app)
-        .delete('/ /' + newBooking._id)
+        .delete('/api/bookings/' + newBooking._id)
         .expect(204)
         .end((err, res) => {
           if (err) {
@@ -132,7 +132,7 @@ describe('Booking API:', function() {
 
     it('should respond with 404 when booking does not exist', function(done) {
       request(app)
-        .delete('/ /' + newBooking._id)
+        .delete('/api/bookings/' + newBooking._id)
         .expect(404)
         .end((err, res) => {
           if (err) {

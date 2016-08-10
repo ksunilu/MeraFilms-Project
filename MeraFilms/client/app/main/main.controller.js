@@ -16,15 +16,15 @@
       });
     }//end constructor
 
-    applyFilter()
-    {
-
-    }
-    
-    forceApplyFilter()
-    {
-
-    }
+    // applyFilter()
+    // {
+    //
+    // }
+    //
+    // forceApplyFilter()
+    // {
+    //
+    // }
 
     clearFilter()
     {

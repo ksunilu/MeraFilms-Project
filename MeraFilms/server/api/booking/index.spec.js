@@ -34,7 +34,7 @@ describe('Booking API Router:', function() {
     expect(bookingIndex).to.equal(routerStub);
   });
 
-  describe('GET / ', function() {
+  describe('GET /api/bookings', function() {
 
     it('should route to booking.controller.index', function() {
       expect(routerStub.get
@@ -44,7 +44,7 @@ describe('Booking API Router:', function() {
 
   });
 
-  describe('GET / /:id', function() {
+  describe('GET /api/bookings/:id', function() {
 
     it('should route to booking.controller.show', function() {
       expect(routerStub.get
@@ -54,7 +54,7 @@ describe('Booking API Router:', function() {
 
   });
 
-  describe('POST / ', function() {
+  describe('POST /api/bookings', function() {
 
     it('should route to booking.controller.create', function() {
       expect(routerStub.post
@@ -64,7 +64,7 @@ describe('Booking API Router:', function() {
 
   });
 
-  describe('PUT / /:id', function() {
+  describe('PUT /api/bookings/:id', function() {
 
     it('should route to booking.controller.update', function() {
       expect(routerStub.put
@@ -74,7 +74,7 @@ describe('Booking API Router:', function() {
 
   });
 
-  describe('PATCH / /:id', function() {
+  describe('PATCH /api/bookings/:id', function() {
 
     it('should route to booking.controller.update', function() {
       expect(routerStub.patch
@@ -84,7 +84,7 @@ describe('Booking API Router:', function() {
 
   });
 
-  describe('DELETE / /:id', function() {
+  describe('DELETE /api/bookings/:id', function() {
 
     it('should route to booking.controller.destroy', function() {
       expect(routerStub.delete
