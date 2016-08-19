@@ -1,0 +1,102 @@
+<div class="center-block container well">
+  <h1>
+    <span class="center-block label label-info">
+    Movie Review
+    </span>
+  </h1>
+    <div class="row"  ng-repeat="movie in $ctrl.allMovies" >
+        <div class="col-md-3 col-sm-3 col-xs-6" >
+          <h3>
+                  <img class="center-block" width ="200" height = "300" src={{movie.Poster}}>
+                  <span class="center-block label label-default">{{movie.Title}}</span>
+          </h3>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-6">
+          <h3> {{movie.Title}} Rating : {{movie.star}}/5
+            <!-- begin star -->
+            <span ng-model="movie.star" style="color:red" ng-init="movie.star=$ctrl.getStar(movie)">
+                <span ng-class="$ctrl.getStarClass(movie.star,1)" ></span>
+                <span ng-class="$ctrl.getStarClass(movie.star,2)" ></span>
+                <span ng-class="$ctrl.getStarClass(movie.star,3)" ></span>
+                <span ng-class="$ctrl.getStarClass(movie.star,4)" ></span>
+                <span ng-class="$ctrl.getStarClass(movie.star,5)" ></span>
+            </span>
+            <!--end star  ;font-size:20px -->
+
+          </h3>
+              <a ng-href="http://www.imdb.com/title/{{movie.imdbID}}">
+                View on IMDB
+              </a>
+
+          <ul>
+          <li> Director: {{movie.Director}}
+          </li><li> Writer: {{movie.Writer}}
+          </li><li> Country: {{movie.Country}}
+          </li><li> Language: {{movie.Language}}
+          </li><li> Released: {{movie.Released}}
+          </li><li> Actors: {{movie.Actors}}
+          </li><li> Plot: {{movie.Plot}}
+          </li>
+          </ul>
+
+          <!-- <a ng-href="{{'http://gdata.youtube.com/feeds/api/videos?q=' + movie.Title + '-trailer&start-index=1&max-results=1&v=2&alt=json&hd'}}">
+            Trailer
+            {{'http://gdata.youtube.com/feeds/api/videos?q=' + movie.Title + '-trailer&start-index=1&max-results=1&v=2&alt=json&hd'}}
+          </a>
+          <video width="50%" height="50%" controls>
+            <source src = "{{'http://gdata.youtube.com/feeds/api/videos?q=' + movie.Title + '-trailer&start-index=1&max-results=1&v=2&alt=json&hd'}}" type="video/mp4" />
+            your browser does't support the video tag.
+          </video> -->
+
+          <a ng-click = "$ctrl.showMore(movie)">Rate & Review ...</a>
+          <div ng-show ="movie.isReview"  >
+            <form class="form-inline">
+                  <table width="100%">
+                    <tr><td>
+                    <input class="form-control text-uppercase" style="width:80%" placeholder = "Name"
+                      style="text-transform: uppercase;" type="text"
+                       ng-model="$ctrl.fm.reviewer" />
+
+                       <!-- begin star -->
+                       <span ng-model="$ctrl.fm.star" style="color:red" ng-init="$ctrl.fm.star=3">
+                           <span ng-class="$ctrl.getStarClass($ctrl.fm.star,1)" ng-click="$ctrl.fm.star=1" ></span>
+                           <span ng-class="$ctrl.getStarClass($ctrl.fm.star,2)" ng-click="$ctrl.fm.star=2"></span>
+                           <span ng-class="$ctrl.getStarClass($ctrl.fm.star,3)" ng-click="$ctrl.fm.star=3"></span>
+                           <span ng-class="$ctrl.getStarClass($ctrl.fm.star,4)" ng-click="$ctrl.fm.star=4"></span>
+                           <span ng-class="$ctrl.getStarClass($ctrl.fm.star,5)" ng-click="$ctrl.fm.star=5"></span>
+                       </span>
+                       <!--end star  -->
+                       <button type="button" class="btn btn-info btn-sm" ng-click="$ctrl.addReview(movie)">
+                            Save
+                       </button>
+                    </td>
+                  </tr>
+                  <tr>
+                  <td >
+                  <textarea class="form-control text-uppercase" placeholder = "Movie Review"
+                  style="text-transform: uppercase; width:100%" ng-model="$ctrl.fm.reviewText" />
+                  </td>
+                  </tr>
+                  </table>
+
+              </form>
+                <div ng-repeat="rev in movie.reviews">
+                    <details>
+                        <summary>{{rev.reviewer}} {{rev.star}}/5
+                            <!-- begin star -->
+                            <span ng-model="rev.star" style="color:red">
+                                <span ng-class="$ctrl.getStarClass(rev.star,1)" ></span>
+                                <span ng-class="$ctrl.getStarClass(rev.star,2)" ></span>
+                                <span ng-class="$ctrl.getStarClass(rev.star,3)" ></span>
+                                <span ng-class="$ctrl.getStarClass(rev.star,4)" ></span>
+                                <span ng-class="$ctrl.getStarClass(rev.star,5)" ></span>
+                            </span>
+                            <!--end star  ;font-size:20px -->
+                        </summary>
+                        <p style="margin-left: 25px;">{{rev.reviewText}}</p>
+                    </details>
+                </div>
+          </div>
+        </div>
+    </div>
+</div>

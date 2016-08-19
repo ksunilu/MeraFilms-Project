@@ -22,7 +22,8 @@ var MovieSchema = new mongoose.Schema({
   imdbVotes:	String	,
   imdbID:	String	,
   Type:	String	,
-  Response:	String
+  Response:	String,
+  reviews : [ {reviewer : String, reviewText : String, star : String } ]
 });
 
 export default mongoose.model('Movie', MovieSchema);

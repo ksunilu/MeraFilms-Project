@@ -5,11 +5,12 @@
             <div class ="col-sm-offset-4 col-sm-4" >
                   {{$ctrl.seatData.count}} Seats of <b> {{$ctrl.seatData.name}} </b> class @ Rs.{{$ctrl.seatData.price}}
             </div>
-
               <table class="table">
                 <tr ng-repeat="row in $ctrl.seatData.rows">
                   <td> <b> {{row.rn}} </b> </td>
-                  <td ng-repeat="v in row.s  track by $index">  <span class="badge pull-right"> {{v}} </span></td>
+                  <td ng-repeat="v in row.s  track by $index">
+                     <span class="badge pull-right"> {{v}} </span>
+                   </td>
                 </tr>
             </table>
       </div>

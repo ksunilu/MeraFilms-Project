@@ -16,7 +16,8 @@
                 <td> <strong>Movie	:	</strong>
                 </td>
                 <td>
-                  <select  class="form-control text-uppercase" ng-model="$ctrl.showData.movie_i"  ng-change="$ctrl.selectMovie()">
+                  <select  class="form-control text-uppercase" ng-model="$ctrl.showData.movie_i"
+                   ng-change="$ctrl.selectMovie()">
                       <option value={{$index}}   ng-repeat="m in $ctrl.allMovies" > {{m.Title}} </option>
                   </select>
                 </td>
@@ -25,7 +26,8 @@
                 <td> <strong>Theater :</strong>
                 </td>
                 <td>
-                  <select  class="form-control text-uppercase" ng-model="$ctrl.showData.name" ng-change="$ctrl.selectShowTheater()"
+                  <select  class="form-control text-uppercase" ng-model="$ctrl.showData.name"
+                  ng-change="$ctrl.selectShowTheater()"
                   ng-options = "m.name as m.name for m in $ctrl.allCinemas" >
                   </select>
                 </td>
@@ -34,7 +36,8 @@
                 <td> <strong>Time Slot	:</strong>
                 </td>
                 <td>
-                  <select  class="form-control text-uppercase" ng-model="$ctrl.showData.slot_id"  ng-change="$ctrl.selectSlot()">
+                  <select  class="form-control text-uppercase" ng-model="$ctrl.showData.slot_id"
+                  ng-change="$ctrl.selectSlot()">
                       <option value={{m._id}}   ng-repeat="m in $ctrl.allCinemas | filter : {'name': $ctrl.showData.name}" >
                          {{m.slot}}
                       </option>

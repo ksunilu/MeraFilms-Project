@@ -66,5 +66,16 @@
       </tr>
     </table>
   </div>
-
+  <div>
+    <pre >
+      <span ng-repeat ="r in $ctrl.dirtyBooking.seatPlan.rows">
+      {{r.payment_id}}
+      </span>
+    </pre>
+    <pre>
+      <span ng-repeat ="r in $ctrl.selectedBooking.seatPlan.rows">
+      {{r.payment_id}}
+      </span>
+    </pre>
+  </div>
 </div>

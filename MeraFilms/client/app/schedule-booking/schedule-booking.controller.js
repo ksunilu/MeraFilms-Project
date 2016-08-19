@@ -82,6 +82,7 @@ class ScheduleBookingComponent {
                 break;
               }
         }
+
         //select the cinema data start
         this.setBookingID0();
 
@@ -117,10 +118,7 @@ class ScheduleBookingComponent {
         // alert('adding');
         var cp = JSON.parse( JSON.stringify( this.booking ));
         if (this.booking.bdate) {
-              this.$http.post('/api/bookings',
-                  // JSON.stringify(cp)
-                  angular.toJson(cp)
-              );
+              this.$http.post('/api/bookings', angular.toJson(cp) );
               this.updateAllBookingNClear();
         }
       }
