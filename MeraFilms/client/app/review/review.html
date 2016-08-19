@@ -1,7 +1,7 @@
 <div class="center-block container well">
   <h1>
     <span class="center-block label label-info">
-    Movie Review
+    Movie Review & Trailers
     </span>
   </h1>
     <div class="row"  ng-repeat="movie in $ctrl.allMovies" >
@@ -47,6 +47,15 @@
             <source src = "{{'http://gdata.youtube.com/feeds/api/videos?q=' + movie.Title + '-trailer&start-index=1&max-results=1&v=2&alt=json&hd'}}" type="video/mp4" />
             your browser does't support the video tag.
           </video> -->
+
+
+          <div class="embed-responsive embed-responsive-16by9"
+          ng-init="$ctrl.setTrailer(movie)">
+              <iframe class="embed-responsive-item" id="player"
+                  src="https://www.youtube.com/embed/" type="text/html"
+                  width="100%" height="450" allowfullscreen />
+          </div>
+
 
           <a ng-click = "$ctrl.showMore(movie)">Rate & Review ...</a>
           <div ng-show ="movie.isReview"  >

@@ -43,9 +43,9 @@ class ReviewComponent {
     if(val < star ){return 'glyphicon glyphicon-star-empty';}
     else {return 'glyphicon glyphicon-star';}
   }
+
   addReview(mov)
   {
-
     var revObj = angular.copy({reviewer : this.fm.reviewer,
           reviewText : this.fm.reviewText,
           star : this.fm.star
@@ -58,6 +58,18 @@ class ReviewComponent {
     // this.$http.get('/api/movies')
     this.$http.put('/api/movies/' + mov._id, angular.toJson(mov) );
   }
+
+  setTrailer(mov)
+  {
+    this.$http.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + mov.Title + '-trailer&key=AIzaSyBT_yauMryVu4uYY5X_85HFPmxDIIGr498')
+       .then(response => {
+    var trailer_id=response.data.items[0].id.videoId;
+    var trailer='https://www.youtube.com/embed/'+trailer_id;
+    document.getElementById('player').setAttribute('src',trailer);
+    // mov.trailer = 'https://www.youtube.com/embed/'+ response.data.items[0].id.videoId;
+    });
+  }
+
   getStar(mov)
   {
     if ( mov.reviews.length > 0)
