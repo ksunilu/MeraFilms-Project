@@ -1,4 +1,36 @@
 <div class="container">
+<script type="text/javascript">
+var input = document.getElementById('ccard');
+input.onkeyup = function (e) {
+    if (this.value == this.lastValue) return;
+    var caretPosition = this.selectionStart;
+    var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
+    var parts = [];
+
+    for (var i = 0, len = sanitizedValue.length; i < len; i += 4) {
+        parts.push(sanitizedValue.substring(i, i + 4));
+    }
+
+    for (var i = caretPosition - 1; i >= 0; i--) {
+        var c = this.value[i];
+        if (c < '0' || c > '9') {
+            caretPosition--;
+        }
+    }
+    caretPosition += Math.floor(caretPosition / 4);
+    this.value = this.lastValue = parts.join(' ').substring(0,19);
+    this.selectionStart = this.selectionEnd = caretPosition;
+}
+
+var cvv =  document.getElementById('cvv');
+cvv.onkeyup = function (e) {
+  if (this.value == this.lastValue) return;
+  var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
+  this.value = this.lastValue = sanitizedValue.substring(0,3);
+}
+</script>
+
+
       <div class="row">
           <div class="centre-block">
             <form>
@@ -32,7 +64,7 @@
                       <td> <strong>Debit/Credit Card Number :</strong>
                       </td>
                       <td>
-                        <input class="form-control" ui-mask="'9999-9999-9999-9999'" type="text"
+                        <input class="form-control" id="ccard" type="text"
                         ng-model="$ctrl.showData.number" />
                       </td>
                   </tr>
@@ -40,7 +72,7 @@
                       <td> <strong>CVV Number :</strong>
                       </td>
                       <td>
-                        <input class="form-control"  type="text"  ng-model="$ctrl.showData.cvv" />
+                        <input class="form-control" id="cvv" type="text"  ng-model="$ctrl.showData.cvv" />
                       </td>
                   </tr>
                   <tr>
