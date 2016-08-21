@@ -50,8 +50,8 @@
 
 
           <div class="embed-responsive embed-responsive-16by9"
-          ng-init="$ctrl.setTrailer(movie)">
-              <iframe class="embed-responsive-item" id="player"
+          ng-init="$ctrl.setTrailer(movie,$index)">
+              <iframe class="embed-responsive-item" id="{{'player'+$index}}"
                   src="https://www.youtube.com/embed/" type="text/html"
                   width="100%" height="450" allowfullscreen />
           </div>

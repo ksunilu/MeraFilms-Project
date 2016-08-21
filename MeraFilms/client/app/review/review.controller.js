@@ -59,13 +59,13 @@ class ReviewComponent {
     this.$http.put('/api/movies/' + mov._id, angular.toJson(mov) );
   }
 
-  setTrailer(mov)
+  setTrailer(mov,i)
   {
     this.$http.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + mov.Title + '-trailer&key=AIzaSyBT_yauMryVu4uYY5X_85HFPmxDIIGr498')
        .then(response => {
     var trailer_id=response.data.items[0].id.videoId;
     var trailer='https://www.youtube.com/embed/'+trailer_id;
-    document.getElementById('player').setAttribute('src',trailer);
+    document.getElementById('player'+i).setAttribute('src',trailer);
     // mov.trailer = 'https://www.youtube.com/embed/'+ response.data.items[0].id.videoId;
     });
   }
