@@ -1,0 +1,79 @@
+  'use strict';
+
+(function() {
+  class MainController {
+    constructor($http, $scope, socket) {
+      this.allBookings = [];
+      this.allMovies = [];
+      this.myFilter ='';
+      this.showData = {};
+
+      this.$http = $http;
+      this.socket = socket;
+
+      $scope.$on('$destroy', function() {
+        socket.unsyncUpdates('main');
+      });
+    }//end constructor
+
+    FilterFun(value, index, array)
+    {
+      // if(value)
+    }
+    //
+    // forceApplyFilter()
+    // {
+    //
+    // }
+
+    clearFilter()
+    {
+      this.showData = {};
+    }
+    $onInit() {
+      this.getAllBookings();
+    }// end $onInit
+
+    getAllBookings()
+    {
+      this.$http.get('/api/bookings')
+        .then(response => {
+          this.allBookings = response.data;
+          this.socket.syncUpdates('main', this.allBookings);
+             this.setMinMax();
+        });
+        //get all movies
+        this.$http.get('/api/movies')
+          .then(response => {
+            this.allMovies = response.data;
+            this.socket.syncUpdates('main', this.allMovies);
+        });
+
+    }
+
+    setMinMax()
+    {
+
+      var maxDate =this.allBookings[0].bdate;
+      var minDate = this.allBookings[0].bdate;
+      for(var i = 1; i < this.allBookings.length; i++ )
+      {
+        if(maxDate < this.allBookings[i].bdate){
+          maxDate = this.allBookings[i].bdate;
+        }
+        if(minDate > this.allBookings[i].bdate){
+          minDate  =this.allBookings[i].bdate;
+        }
+      }
+      this.showData.maxDate = new Date(maxDate);
+      this.showData.minDate = new Date(minDate);
+    }
+
+
+  }//end class MainController
+  angular.module('meraFilmsApp')
+    .component('main', {
+      templateUrl: 'app/main/main.html',
+      controller: MainController
+    });
+})();

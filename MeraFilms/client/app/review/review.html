@@ -7,7 +7,7 @@
     <div class="row"  ng-repeat="movie in $ctrl.allMovies" >
         <div class="col-md-3 col-sm-3 col-xs-6" >
           <h3>
-                  <img class="center-block" width ="200" height = "300" src={{movie.Poster}}>
+                  <img class="center-block" width ="200" height = "300" ng-src={{movie.Poster}}>
                   <span class="center-block label label-default">{{movie.Title}}</span>
           </h3>
         </div>

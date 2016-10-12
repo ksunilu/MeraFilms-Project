@@ -67,40 +67,44 @@
                     </h2>
                     <form>
                       <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                           <input class="form-control text-uppercase center-block"
                           type="text" style="text-align: center"
                           ng-model="$ctrl.showData.myFilter"
                           placeholder="Search for Movie & Theater" />
                         </div>
+                          <div class="col-md-2">
+                            <input class="form-control text-uppercase center-block"
+                            type="date" ng-model="$ctrl.showData.minDate"
+                             />
+                          </div>
+                          <div class="col-md-2">
+                            <input class="form-control text-uppercase center-block"
+                            type="date" ng-model="$ctrl.showData.maxDate"
+                            />
+                          </div>
                       </div>
                     </form>
                 </div>
                 <div class="row"  >
+                      <!-- <div class="col-md-3 col-sm-3 col-xs-6"
+                        ng-repeat="king in $ctrl.allBookings | filter : $ctrl.showData.myFilter "
+                        ng-click="$ctrl.showSelectedBookings($index)"> -->
+
                       <div class="col-md-3 col-sm-3 col-xs-6"
-                          ng-repeat="movie in $ctrl.allMovies | filter : $ctrl.showData.myFilter"
+                          ng-repeat="king in $ctrl.allBookings | filter : $ctrl.FilterFun(king, $index, $ctrl.allBookings)"
                           ng-click="$ctrl.showSelectedBookings($index)">
-                        <a href="/showing/{{movie.imdbID}}" >
+
+                        <a href="/book/{{king._id}}" >
                         <h3>
-                            <span class="center-block label label-default">{{movie.Title}}</span>
-                            <img class="center-block" width ="200" height = "300" ng-src="{{movie.Poster}}">
-
-                            <!-- begin star -->
-                            <span class="center-block label label-default"
-                                  ng-model="movie.star"  ng-init="movie.star=$ctrl.getStar(movie)">
-                              Rating:
-                                <span ng-class="$ctrl.getStarClass(movie.imdbRating,2)" ></span>
-                                <span ng-class="$ctrl.getStarClass(movie.imdbRating,4)" ></span>
-                                <span ng-class="$ctrl.getStarClass(movie.imdbRating,6)" ></span>
-                                <span ng-class="$ctrl.getStarClass(movie.imdbRating,8)" ></span>
-                                <span ng-class="$ctrl.getStarClass(movie.imdbRating,10)" ></span>
+                          <span class="center-block label label-danger"> {{king.name}} </span>
+                            <span  ng-repeat="movie in $ctrl.allMovies | filter : {'imdbID': king.imdbID}" >
+                                <img class="center-block" width ="200" height = "300" src={{movie.Poster}}>
                             </span>
-                            <!--end star   -->
-
-                        </h3>
+                            <span class="center-block label label-default">{{king.movie}}</span>
+                          </h3>
                         </a>
                       </div>
-
                 </div>
             </div>
             <!-- Showing now ends  -->

@@ -114,9 +114,8 @@ class ScheduleBookingComponent {
 
       // code CRUD starts //
       addBooking() {
-        // this.setBookingVar();
-        // alert('adding');
-        var cp = JSON.parse( JSON.stringify( this.booking ));
+        var cp = angular.copy(this.booking);
+        delete cp._id;
         if (this.booking.bdate) {
               this.$http.post('/api/bookings', angular.toJson(cp) );
               this.updateAllBookingNClear();

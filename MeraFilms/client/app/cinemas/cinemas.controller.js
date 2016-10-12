@@ -50,6 +50,7 @@
 
     addCinemas() {
       this.setSeatData();
+      delete this.seatData._id;
       var myData = {
         name: this.name,
         location: this.location,

@@ -1,0 +1,47 @@
+<div class="center-block container well">
+  <h2 class="center-block">
+            <span class="center-block label label-info">
+            {{$ctrl.selectedMovie.Title}} 
+            <!-- begin star -->
+            <span ng-model="$ctrl.selected$ctrl.selectedMovie.imdbRating" style="color:red">
+                <span ng-class="$ctrl.getStarClass($ctrl.selectedMovie.imdbRating,2)" ></span>
+                <span ng-class="$ctrl.getStarClass($ctrl.selectedMovie.imdbRating,4)" ></span>
+                <span ng-class="$ctrl.getStarClass($ctrl.selectedMovie.imdbRating,6)" ></span>
+                <span ng-class="$ctrl.getStarClass($ctrl.selectedMovie.imdbRating,8)" ></span>
+                <span ng-class="$ctrl.getStarClass($ctrl.selectedMovie.imdbRating,10)" ></span>
+            </span>
+            <!--end star  -->
+            </span>
+  </h2>
+    <div class="row"   >
+        <div class="col-md-3 col-sm-3 col-xs-6" >
+                  <img class="center-block" width ="200" height = "300" ng-src="{{$ctrl.selectedMovie.Poster}}">
+                  <h3><span class="center-block label label-default">{{$ctrl.selectedMovie.Title}}</span></h3>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-6">
+            <div>
+                <ul>
+                        <li> Director: {{$ctrl.selectedMovie.Director}}
+                        </li><li> Writer: {{$ctrl.selectedMovie.Writer}}
+                        </li><li> Country: {{$ctrl.selectedMovie.Country}}
+                        </li><li> Language: {{$ctrl.selectedMovie.Language}}
+                        </li><li> Released: {{$ctrl.selectedMovie.Released}}
+                        </li><li> Actors: {{$ctrl.selectedMovie.Actors}}
+                        </li><li> Plot: {{$ctrl.selectedMovie.Plot}}
+                        </li>
+                </ul>
+            </div>
+            <hr width = "50%" color="green" />
+            <div class="row"  ng-repeat="king in $ctrl.allBookings | filter : $ctrl.showing.imdbID " >
+                <a href="/book/{{king._id}}" >
+                    <h4>
+                        <span class="col-md-3 col-sm-3 col-xs-6"> {{king.name}}  </span>
+                        <span class="col-md-2 col-sm-2 col-xs-3"> {{king.bdate}}  </span>
+                        <span class="col-md-2 col-sm-2 col-xs-3"> {{king.slot}}  </span>
+                        <span class="col-md-3 col-sm-3 col-xs-6"> {{king.location}}  </span>                        
+                    </h4>
+                </a>
+            </div>
+        </div>
+    </div>  
+</div>
